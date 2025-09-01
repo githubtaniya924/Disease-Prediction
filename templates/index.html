@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symptom Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Health Risk Prediction</h1>
+            <p>Select your symptoms and get a disease prediction from multiple models.</p>
+        </header>
+
+        <section class="symptom-selection-section">
+            <h2>Select Symptoms</h2>
+            <p class="subtitle">Search for symptoms (2-5 allowed).</p>
+            
+            <div class="search-bar-container">
+                <input type="text" id="symptom-search" placeholder="Start typing a symptom...">
+            </div>
+            
+            <div id="symptom-results" class="symptom-list"></div>
+            
+            <div id="selected-symptoms" class="selected-symptoms-list">
+                <h3>Selected Symptoms:</h3>
+                <div id="selected-symptoms-container"></div>
+            </div>
+        </section>
+
+        <section class="prediction-section">
+            <h2>Choose Prediction Model</h2>
+            <div class="button-group">
+                <button class="model-button" data-model="decision_tree" onclick="predict('decision_tree')" disabled>Decision Tree</button>
+                <button class="model-button" data-model="knn" onclick="predict('knn')" disabled>KNN</button>
+                <button class="model-button" data-model="association" onclick="predict('association')" disabled>Association Rules</button>
+            </div>
+            <p id="symptom-count-message"></p>
+        </section>
+
+        <section class="results-section">
+            <h2>Prediction Results</h2>
+            <div class="results-grid">
+                <div class="result-box" id="dt-result">
+                    <h3>Decision Tree</h3>
+                    <p><strong>Predicted Disease:</strong> <span id="dt-disease"></span></p>
+                    <p><strong>Confidence:</strong> <span id="dt-confidence"></span></p>
+                </div>
+
+                <div class="result-box" id="knn-result">
+                    <h3>KNN</h3>
+                    <p><strong>Predicted Disease:</strong> <span id="knn-disease"></span></p>
+                    <p><strong>Confidence:</strong> <span id="knn-confidence"></span></p>
+                </div>
+
+                <div class="result-box" id="association-result">
+                    <h3>Association Rules</h3>
+                    <p><strong>Related Symptoms:</strong> <span id="association-symptoms"></span></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
