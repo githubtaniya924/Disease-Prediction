@@ -48,15 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addSymptom(symptom) {
-        if (selectedSymptoms.length < 5) {
-            selectedSymptoms.push(symptom);
-            symptomSearchInput.value = '';
-            symptomResultsContainer.innerHTML = '';
-            renderSelectedSymptoms();
-            updateButtonState();
-        } else {
-            alert('You can select a maximum of 5 symptoms.');
-        }
+        selectedSymptoms.push(symptom);
+        symptomSearchInput.value = '';
+        symptomResultsContainer.innerHTML = '';
+        renderSelectedSymptoms();
+        updateButtonState();
     }
 
     function removeSymptom(symptomToRemove) {
